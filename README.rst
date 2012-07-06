@@ -8,7 +8,7 @@ Installation
 
 Install the module via git::
 
-    pip install -e git://github.com/robinedwards/django-debug-toolbar-neo4j-panel.git
+    pip install -e git+git@github.com:robinedwards/django-debug-toolbar-neo4j-panel.git@HEAD#egg=neo4j_panel-dev
 
 Add panel to your list of panels::
 
