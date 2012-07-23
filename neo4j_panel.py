@@ -164,7 +164,7 @@ template = """
 </tr>
 
 {% if call.trace %}
-<tr class="djdtNeo4jTrace" style="display:none">
+<tr class="djdtNeo4jTrace">
 <td colspan="4">
 <pre class="stack">{{ call.trace }}</pre>
 </td>
@@ -172,7 +172,7 @@ template = """
 {% endif %}
 
 {% if call.response %}
-<tr class="djdtNeo4jResponse" style="display:none">
+<tr class="djdtNeo4jResponse">
 <td colspan="4">
 <pre class="stack">{{ call.response|safe }}</pre>
 </td>
@@ -180,7 +180,7 @@ template = """
 {% endif %}
 
 {% if call.trace %}
-<tr class="djdtNeo4jData" style="display:none">
+<tr class="djdtNeo4jData">
 <td colspan="4">
 <pre class="stack">{{ call.data }}</pre>
 </td>
@@ -192,14 +192,17 @@ template = """
 </tbody>
 </table>
 <script type="text/javascript">
+$('.djdtNeo4jTrace').attr('style', 'display:none');
+$('.djdtNeo4jResponse').attr('style', 'display:none');
+$('.djdtNeo4jData').attr('style', 'display:none');
 $('.djdtNeo4jShowData').click(function () {
-$(this).parent().parent().next().next().next().toggle()
-})
+$(this).parent().parent().next().next().next().toggle();
+});
 $('.djdtNeo4jShowTrace').click(function () {
-$(this).parent().parent().next().toggle()
-})
+$(this).parent().parent().next().toggle();
+});
 $('.djdtNeo4jShowResponse').click(function () {
-$(this).parent().parent().next().next().toggle()
-})
+$(this).parent().parent().next().next().toggle();
+});
 </script>
 """
