@@ -9,7 +9,8 @@ from debug_toolbar.panels import DebugPanel
 from django.utils.translation import ugettext_lazy as _, ungettext
 from debug_toolbar.utils import get_stack, tidy_stacktrace
 import neo4jrestclient.request
-from pprint import pprint as pp
+import logging
+logger = logging.getLogger(__name__)
 
 __all__ = ['Neo4jPanel']
 
@@ -88,6 +89,7 @@ class Neo4jPanel(DebugPanel):
         calls = len(self.calls)
         duration = sum(map(operator.itemgetter('duration'), self.calls))
 
+        logger.debug('%d requests in %.2fms' % (calls, duration))
         return ungettext('%(calls)d call in %(duration).2fms',
                          '%(calls)d calls in %(duration).2fms',
                          calls) % {'calls': calls, 'duration': duration}
